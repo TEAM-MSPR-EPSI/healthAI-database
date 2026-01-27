@@ -1,3 +1,5 @@
+-- Schema base de donnees
+
 CREATE TABLE subscription(
    subscription_id VARCHAR(50),
    subscription_name VARCHAR(50) NOT NULL,
