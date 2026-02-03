@@ -248,3 +248,133 @@ CREATE TABLE session_exercise(
    FOREIGN KEY(exercise_id) REFERENCES exercise(exercise_id),
    FOREIGN KEY(session_id) REFERENCES session(session_id)
 );
+
+
+-- Ajout de données
+-- Insertion dans subscription
+INSERT INTO subscription (subscription_id, subscription_name, subscription_active, subscription_auto_renewal, subscription_public)
+VALUES
+('sub_001', 'Basic Plan', TRUE, TRUE, TRUE),
+('sub_002', 'Pro Plan', TRUE, FALSE, TRUE),
+('sub_003', 'Corporate Plan', TRUE, TRUE, FALSE);
+
+-- Insertion dans program
+INSERT INTO program (program_id, program_name, program_goal, program_session_count, program_duration_days, program_active)
+VALUES
+('prog_001', 'Weight Loss Starter', 'weight loss', 10, 30, TRUE),
+('prog_002', 'Muscle Builder', 'muscle gain', 15, 45, TRUE),
+('prog_003', 'Yoga Flex', 'flexibility', 8, 28, TRUE);
+
+-- Insertion dans equipment
+INSERT INTO equipment (equipment_id, equipment_name)
+VALUES
+('eq_001', 'Dumbbell'),
+('eq_002', 'Treadmill'),
+('eq_003', 'Yoga Mat');
+
+-- Insertion dans meal
+INSERT INTO meal (meal_id, meal_name, meal_description, meal_preparation)
+VALUES
+('meal_001', 'Chicken Salad', 'Fresh chicken with greens', 'Mix chicken with lettuce and dressing'),
+('meal_002', 'Protein Shake', 'High protein shake', 'Blend protein powder with milk and banana');
+
+-- Insertion dans food
+INSERT INTO food (food_id, food_name, food_allergens, food_calories_per_100g, food_protein_per_100g, food_fiber_per_100g, food_sugar_per_100g, food_carbs_per_100g, food_salt_per_100g, food_fat_per_100g, food_saturated_fat_per_100g)
+VALUES
+('food_001', 'Chicken Breast', NULL, 165, 31.0, 0.0, 0.0, 0.0, 0.1, 3.6, 1.0),
+('food_002', 'Lettuce', NULL, 15, 1.4, 1.3, 0.8, 2.9, 0.0, 0.2, 0.0),
+('food_003', 'Milk', 'Lactose', 42, 3.4, 0.0, 5.0, 5.0, 0.1, 1.0, 0.6);
+
+-- Insertion dans company
+INSERT INTO company (company_name, company_email, company_partnership_date, company_type)
+VALUES
+('FitCorp', 'contact@fitcorp.com', '2024-01-15', 'mid-size'),
+('WellnessInc', 'info@wellnessinc.org', '2023-11-20', 'startup');
+
+-- Insertion dans subscription_pricing
+INSERT INTO subscription_pricing (pricing_id, pricing_name, pricing_amount, pricing_start_date, pricing_end_date)
+VALUES
+('price_001', 'Basic Monthly', 9.99, '2024-01-01', NULL),
+('price_002', 'Pro Monthly', 19.99, '2024-01-01', NULL);
+
+-- Insertion dans session
+INSERT INTO session (session_id, session_order, program_id)
+VALUES
+('sess_001', 1, 'prog_001'),
+('sess_002', 2, 'prog_001');
+
+-- Insertion dans nutritionist
+INSERT INTO nutritionist (nutritionist_id, nutritionist_lastname, nutritionist_firstname, nutritionist_email, nutritionist_phone, nutritionist_gender)
+VALUES
+('nut_001', 'Dupont', 'Sophie', 'sophie.dupont@example.com', '0600000001', 'Female'),
+('nut_002', 'Martin', 'Jean', 'jean.martin@example.com', '0600000002', 'Male');
+
+-- Insertion dans "user"
+INSERT INTO "user" (user_id, user_role, user_password, user_email, user_lastname, user_firstname, user_birthdate, user_country, user_city, user_gender, user_phone, user_height, user_weight, company_id)
+VALUES
+('user_001', 'user', 'hashed_password_1', 'alice@example.com', 'Durand', 'Alice', '1990-05-10', 'France', 'Paris', 'Female', '0600111222', 165.0, 60.0, NULL),
+('user_002', 'admin', 'hashed_password_2', 'bob@example.com', 'Lemoine', 'Bob', '1985-07-20', 'France', 'Lyon', 'Male', '0600222333', 180.0, 75.0, 1);
+
+-- Insertion dans consultation
+INSERT INTO consultation (consultation_id, consultation_video_link, consultation_report, consultation_datetime, user_id, nutritionist_id)
+VALUES
+('cons_001', 'https://zoom.us/meeting123', 'Patient shows good progress', '2026-01-15 10:00:00', 'user_001', 'nut_001');
+
+-- Insertion dans exercise
+INSERT INTO exercise (exercise_id, exercise_name, exercise_type, exercise_difficulty, exercise_duration_minutes, exercise_calories_burned, exercise_target_muscles, exercise_demo_link, exercise_instructions, equipment_id)
+VALUES
+('ex_001', 'Jumping Jacks', 'cardio', 'beginner', 10, 100, 'full body', 'https://example.com/jumping_jacks', 'Jump with legs apart and arms overhead', NULL),
+('ex_002', 'Dumbbell Curl', 'strength training', 'intermediate', 15, 150, 'biceps', 'https://example.com/dumbbell_curl', 'Curl dumbbell slowly', 'eq_001');
+
+-- Insertion dans user_tracking
+INSERT INTO user_tracking (tracking_id, tracking_date, tracking_weight, tracking_sleep_hours, tracking_avg_heart_rate, tracking_steps_count, user_id)
+VALUES
+('track_001', '2026-01-01', 60.0, 7, 70, 8000, 'user_001');
+
+-- Insertion dans user_invoice
+INSERT INTO user_invoice (invoice_id, invoice_date, invoice_amount, user_id, subscription_id)
+VALUES
+('inv_001', '2026-01-01', 9.99, 'user_001', 'sub_001');
+
+-- Insertion dans exercise_session
+INSERT INTO exercise_session (exercise_session_id, exercise_session_start, exercise_session_end, user_id, session_id, exercise_id)
+VALUES
+('exsess_001', '2026-01-10 08:00:00', '2026-01-10 08:30:00', 'user_001', 'sess_001', 'ex_001');
+
+-- Insertion dans user_subscription
+INSERT INTO user_subscription (subscription_id, user_id, subscription_start_date, subscription_end_date)
+VALUES
+('sub_001', 'user_001', '2026-01-01', NULL);
+
+-- Insertion dans follows_program
+INSERT INTO follows_program (user_id, program_id, program_enrollment_date)
+VALUES
+('user_001', 'prog_001', '2026-01-01');
+
+-- Insertion dans includes_meal
+INSERT INTO includes_meal (program_id, meal_id)
+VALUES
+('prog_001', 'meal_001');
+
+-- Insertion dans composed_of
+INSERT INTO composed_of (meal_id, food_id, quantity_grams)
+VALUES
+('meal_001', 'food_001', 150.00),
+('meal_001', 'food_002', 50.00);
+
+-- Insertion dans company_subscription
+INSERT INTO company_subscription (subscription_id, company_id, subscription_start_date, subscription_end_date)
+VALUES
+('sub_003', 1, '2025-12-01', NULL);
+
+-- Insertion dans subscription_price
+INSERT INTO subscription_price (subscription_id, pricing_id)
+VALUES
+('sub_001', 'price_001'),
+('sub_002', 'price_002');
+
+-- Insertion dans session_exercise
+INSERT INTO session_exercise (exercise_id, session_id, exercise_order)
+VALUES
+('ex_001', 'sess_001', 1),
+('ex_002', 'sess_002', 1);
