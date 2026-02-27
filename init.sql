@@ -131,6 +131,7 @@ CREATE TABLE user_(
    user_phone VARCHAR(50) NOT NULL,
    user_size INT NOT NULL,
    user_weight DECIMAL(4,1) NOT NULL,
+   user_last_weight DECIMAL(4,1),
    user_email VARCHAR(255) NOT NULL,
    user_hashpwd VARCHAR(255) NOT NULL,
    user_inscription DATE NOT NULL,
