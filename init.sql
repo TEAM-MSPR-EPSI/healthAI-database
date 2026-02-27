@@ -163,7 +163,7 @@ CREATE TABLE user_biometric(
    biometric_date DATE NOT NULL,
    biometric_sleep INT,
    biometric_steps INT,
-   biometric_weight DECIMAL(4,1) NOT NULL,
+   biometric_weight DECIMAL(4,1),
    user_id INT NOT NULL,
    FOREIGN KEY(user_id) REFERENCES user_(user_id)
 );
