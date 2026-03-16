@@ -70,7 +70,7 @@ CREATE TABLE recipe(
 CREATE TABLE ingredient(
    ingredient_id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
    ingredient_name VARCHAR(100) NOT NULL,
-   ingredient_type ingredient_type_enum NOT NULL,
+   ingredient_type ingredient_type_enum,
    ingredient_energy_100g DECIMAL(6,1),
    ingredient_protein_100g DECIMAL(6,2),
    ingredient_fiber_100g DECIMAL(6,2),
@@ -97,13 +97,13 @@ CREATE TABLE sport_session(
 CREATE TABLE sport_exercise(
    sport_exercise_id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
    sport_exercise_name VARCHAR(255) NOT NULL,
-   sport_exercise_objective objective_enum NOT NULL,
-   sport_exercise_difficulty difficulty_enum NOT NULL,
+   sport_exercise_objective objective_enum,
+   sport_exercise_difficulty difficulty_enum,
    sport_exercise_duration INTEGER,
-   sport_exercise_muscle_group muscle_group_enum NOT NULL,
+   sport_exercise_muscle_group muscle_group_enum,
    sport_exercise_video VARCHAR(255),
    sport_exercise_instruction TEXT,
-   sport_exercise_cal_burned INT NOT NULL
+   sport_exercise_cal_burned INT
 );
 
 CREATE TABLE sport_equipment(
