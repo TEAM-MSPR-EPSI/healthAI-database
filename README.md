@@ -53,13 +53,6 @@ DBeaver est une interface graphique pour gérer les bases de données facilement
    - **Username** : `POSTGRES_USER`
    - **Password** : `POSTGRES_PASSWORD`
 
-### Utilisation courante
-
-- **Explorer les tables** : Double-clic sur la connexion → `Databases` → `healthai_db` → `Schemas` → `public`
-- **Consulter une table** : Clic droit → `View Data`
-- **Exécuter une requête SQL** : `Ctrl + Enter` ou `Cmd + Enter`
-- **Importer/Exporter** : Clic droit sur la table → `Import Data` / `Export Data`
-
 ## Accès en ligne de commande
 
 ```bash
