@@ -53,19 +53,6 @@ DBeaver est une interface graphique pour gérer les bases de données facilement
    - **Username** : `POSTGRES_USER`
    - **Password** : `POSTGRES_PASSWORD`
 
-## Accès en ligne de commande
-
-```bash
-# Connexion à la base
-docker exec -it postgres_db psql -U healthai_user -d healthai_db
-
-# Lister les tables
-\dt
-
-# Quitter
-\q
-```
-
 ## Données d'exemple
 
 Le fichier init.sql contient des données de démonstration :
