@@ -103,7 +103,8 @@ CREATE TABLE sport_exercise(
    sport_exercise_muscle_group muscle_group_enum,
    sport_exercise_video VARCHAR(255),
    sport_exercise_instruction TEXT,
-   sport_exercise_cal_burned INT
+   sport_exercise_cal_burned INT,
+   UNIQUE(sport_exercise_name)
 );
 
 CREATE TABLE sport_equipment(
