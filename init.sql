@@ -143,7 +143,6 @@ CREATE TABLE user_(
    FOREIGN KEY(company_id) REFERENCES company(company_id)
 );
 
-
 CREATE TABLE user_health_profile(
    users_health_profile_id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
    user_health_profile_objective objective_enum,
@@ -176,8 +175,11 @@ CREATE TABLE session_progress(
    session_progress_end DATE,
    sport_session_id INT NOT NULL,
    user_id INT NOT NULL,
+   sport_program_id INT,
+   program_session_rank INT,
    FOREIGN KEY(sport_session_id) REFERENCES sport_session(sport_session_id),
-   FOREIGN KEY(user_id) REFERENCES user_(user_id)
+   FOREIGN KEY(user_id) REFERENCES user_(user_id),
+   FOREIGN KEY(sport_program_id) REFERENCES sport_program(sport_program_id)
 );
 
 CREATE TABLE user_subscription(
