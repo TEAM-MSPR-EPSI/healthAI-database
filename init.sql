@@ -143,7 +143,6 @@ CREATE TABLE user_(
    FOREIGN KEY(company_id) REFERENCES company(company_id)
 );
 
-
 CREATE TABLE user_health_profile(
    users_health_profile_id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
    user_health_profile_objective objective_enum,
@@ -176,8 +175,11 @@ CREATE TABLE session_progress(
    session_progress_end DATE,
    sport_session_id INT NOT NULL,
    user_id INT NOT NULL,
+   sport_program_id INT,
+   program_session_rank INT,
    FOREIGN KEY(sport_session_id) REFERENCES sport_session(sport_session_id),
-   FOREIGN KEY(user_id) REFERENCES user_(user_id)
+   FOREIGN KEY(user_id) REFERENCES user_(user_id),
+   FOREIGN KEY(sport_program_id) REFERENCES sport_program(sport_program_id)
 );
 
 CREATE TABLE user_subscription(
@@ -245,5 +247,5 @@ CREATE TABLE consume(
 );
 
 INSERT INTO user_ (user_username, user_firstname, user_lastname, user_birth, user_role, user_gender, user_city, user_country, user_phone, user_size, user_weight, user_last_weight, user_email, user_hashpwd, user_inscription, sport_program_id, company_id) VALUES
-('SuperAdmin', 'Admin', 'Admin', '1990-04-15', 'admin', 'male', 'Paris', 'France', '+33612345678', 178, 82.0, 84.5, 'admin@admin.fr', '$2b$10$cm7pYDsGwC5jspQOyFpw7.GfnLkkfgiy5I9iY9tKqA14E.SHwXSoS', '2023-01-10', NULL, NULL),
-('SuperUser', 'User', 'User', '1990-04-15', 'user', 'male', 'Paris', 'France', '+33612345678', 178, 82.0, 84.5, 'user@user.fr', '$2b$10$cm7pYDsGwC5jspQOyFpw7.GfnLkkfgiy5I9iY9tKqA14E.SHwXSoS', '2023-01-10', NULL, NULL);
+('SuperAdmin', 'Admin', 'Admin', '1990-04-15', 'admin', 'male', 'Paris', 'France', '+33612345678', 178, 82.0, 84.5, 'admin@admin.fr', '$2b$10$Wp/HejvUOt8L9xbfyRjke.JuTHAkUU/tIDCGE.PjpL.FY6vhIv/E6', '2023-01-10', NULL, NULL),
+('SuperUser', 'User', 'User', '1990-04-15', 'user', 'male', 'Paris', 'France', '+33612345678', 178, 82.0, 84.5, 'user@user.fr', '$2b$10$Wp/HejvUOt8L9xbfyRjke.JuTHAkUU/tIDCGE.PjpL.FY6vhIv/E6', '2023-01-10', NULL, NULL);
